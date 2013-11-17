@@ -9,6 +9,7 @@ apis =
 	npm: require 'npm-packages'
 
 # contributor
+
 contributor = (identities = {}) ->
 
 	deferred = promise.defer()
@@ -37,14 +38,6 @@ contributor = (identities = {}) ->
 
 	# return
 	deferred.promise
-
-contributor
-	gem: 'bcherny'
-	github: 'eighttrackmind'
-	npm: 'bcherny'
-.then (counts) ->
-
-	console.log counts
 
 # exports
 module.exports = contributor

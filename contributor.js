@@ -39,12 +39,4 @@ contributor = function(identities) {
   return deferred.promise;
 };
 
-contributor({
-  gem: 'bcherny',
-  github: 'eighttrackmind',
-  npm: 'bcherny'
-}).then(function(counts) {
-  return console.log(counts);
-});
-
 module.exports = contributor;
