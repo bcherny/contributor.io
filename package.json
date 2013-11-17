@@ -1,0 +1,31 @@
+{
+  "name": "contributor",
+  "version": "0.0.0",
+  "description": "Fetch a user",
+  "main": "contributor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:eighttrackmind/contributor.git"
+  },
+  "keywords": [
+    "contribution",
+    "repository",
+    "package",
+    "module",
+    "author",
+    "user",
+    "username",
+    "github",
+    "npm",
+    "bower",
+    "component"
+  ],
+  "author": "Boris Cherny <boris@performancejs.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eighttrackmind/contributor/issues"
+  }
+}
