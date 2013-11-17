@@ -4,19 +4,22 @@ var contributor;
 contributor = require('../contributor');
 
 exports.contributor = function(test) {
-  test.expect(3);
+  test.expect(4);
   return contributor({
     gem: 'bcherny',
     github: 'eighttrackmind',
-    npm: 'bcherny'
+    npm: 'bcherny',
+    cpan: 'FAYLAND'
   }).then(function(counts) {
-    var gemIsZero, githubIsMoreThan10, npmIsMoreThan10;
+    var cpanIsMoreThan10, gemIsZero, githubIsMoreThan10, npmIsMoreThan10;
     gemIsZero = counts.gem === 0;
     githubIsMoreThan10 = counts.github > 10;
     npmIsMoreThan10 = counts.npm > 10;
+    cpanIsMoreThan10 = counts.cpan > 10;
     test.equals(gemIsZero, true);
     test.equals(githubIsMoreThan10, true);
     test.equals(npmIsMoreThan10, true);
+    test.equals(cpanIsMoreThan10, true);
     return test.done();
   });
 };

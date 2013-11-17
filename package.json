@@ -1,7 +1,7 @@
 {
   "name": "contributor.io",
   "version": "0.0.3",
-  "description": "Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, ...)",
+  "description": "Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, CPAN, ...)",
   "main": "contributor.js",
   "scripts": {
     "test": "./node_modules/.bin/nodeunit test"
@@ -33,7 +33,8 @@
     "npm-packages": "0.0.1",
     "lodash": "~2.3.0",
     "when": "~2.6.0",
-    "gem-count": "0.0.1"
+    "gem-count": "0.0.1",
+    "cpan-count": "0.0.1"
   },
   "devDependencies": {
     "nodeunit": "~0.8.2"
