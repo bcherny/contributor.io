@@ -16,7 +16,7 @@ whitelist = ['github', 'npm']
 contributor = (identities = {}) ->
 
 	deferred = promise.defer()
-	counts = 0
+	counts = {}
 	have = 0
 	need = 0
 
@@ -31,7 +31,9 @@ contributor = (identities = {}) ->
 			deferred.notify counts
 
 	whitelist.forEach (platform) ->
+
 		++need
+
 		if platform of identities
 			apis[platform](identities[platform]).then (count) ->
 				done platform, count
