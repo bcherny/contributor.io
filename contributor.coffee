@@ -1,6 +1,7 @@
 
 # deps
 _ = require 'lodash'
+promise = require 'when'
 apis =
 	github: require 'github-repos'
 	npm: require 'npm-packages'
@@ -14,27 +15,34 @@ whitelist = ['github', 'npm']
 
 contributor = (identities = {}) ->
 
+	deferred = promise.defer()
 	counts = 0
 	have = 0
 	need = 0
-
-	whitelist.forEach (platform) ->
-		++need
-		if platform of identities
-			apis[platform](identities[platform]).then (count) ->
-				done platform, count
-			, error
 
 	done = (platform, count) ->
 
 		counts[platform] = count
 
 		if ++have is need
-			resolve()
+			deferred.resolve counts
 
-	resolve = ->
+		else
+			deferred.notify counts
 
-		counts
+	whitelist.forEach (platform) ->
+		++need
+		if platform of identities
+			apis[platform](identities[platform]).then (count) ->
+				done platform, count
+			, deferred.reject
 
-	error = (err) ->
-		throw new Error err
+	# return
+	deferred.promise
+
+contributor
+	github: 'eighttrackmind'
+	npm: 'bcherny'
+.then (counts) ->
+
+	console.log counts
