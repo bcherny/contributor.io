@@ -1,10 +1,10 @@
 {
   "name": "contributor",
-  "version": "0.0.0",
-  "description": "Fetch a user",
+  "version": "0.0.1",
+  "description": "Fetch counts of a user's contributions to various platforms (Github, NPM, ...)",
   "main": "contributor.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/nodeunit test"
   },
   "repository": {
     "type": "git",
@@ -27,5 +27,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/eighttrackmind/contributor/issues"
+  },
+  "dependencies": {
+    "github-repos": "0.0.2",
+    "npm-packages": "0.0.1"
   }
 }
