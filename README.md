@@ -7,10 +7,12 @@ Fetch counts of a user's contributions to various platforms (Github, NPM, ...)
 
 ## Platform support
 
+### Current
+
 - Github
 - NPM
 
-### Future platform support
+### Future
 
 - Bower
 - Component
