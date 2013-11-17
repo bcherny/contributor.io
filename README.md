@@ -2,7 +2,6 @@ contributor.io
 ==============
 
 [![Build Status](https://travis-ci.org/eighttrackmind/contributor.io.png)](https://travis-ci.org/eighttrackmind/contributor.io.png)
-Fetch a user's gem count from Rubygems
 
 Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, ...)
 
