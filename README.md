@@ -11,12 +11,12 @@ Fetch counts of a user's contributions to various platforms (Github, NPM, ...)
 
 - Github
 - NPM
+- Rubygems
 
 ### Future
 
 - Bower
 - Component
-- Rubygems
 
 ## Usage
 
@@ -24,12 +24,14 @@ Fetch counts of a user's contributions to various platforms (Github, NPM, ...)
 contributor = require 'contributor.io'
 
 contributor
+	gem: 'bcherny'
 	github: 'eighttrackmind'
 	npm: 'bcherny'
 .then (counts) ->
 
 	# returns an object with counts, eg.:
 	# {
+	#	gem: 20
 	#	github: 50
 	#	npm: 45
 	# }

@@ -32,6 +32,7 @@
     "github-repos": "0.0.2",
     "npm-packages": "0.0.1",
     "lodash": "~2.3.0",
-    "when": "~2.6.0"
+    "when": "~2.6.0",
+    "gem-count": "0.0.1"
   }
 }

@@ -1,18 +1,14 @@
 
 # deps
+
 _ = require 'lodash'
 promise = require 'when'
 apis =
+	gem: require 'gem-count'
 	github: require 'github-repos'
 	npm: require 'npm-packages'
 
-# exports
-module.exports = contributor
-
 # contributor
-
-whitelist = ['github', 'npm']
-
 contributor = (identities = {}) ->
 
 	deferred = promise.defer()
@@ -30,12 +26,12 @@ contributor = (identities = {}) ->
 		else
 			deferred.notify counts
 
-	whitelist.forEach (platform) ->
-
-		++need
-
+	_.each apis, (fn, platform) ->
 		if platform of identities
-			apis[platform](identities[platform]).then (count) ->
+
+			++need
+
+			fn(identities[platform]).then (count) ->
 				done platform, count
 			, deferred.reject
 
@@ -43,8 +39,12 @@ contributor = (identities = {}) ->
 	deferred.promise
 
 contributor
+	gem: 'bcherny'
 	github: 'eighttrackmind'
 	npm: 'bcherny'
 .then (counts) ->
 
 	console.log counts
+
+# exports
+module.exports = contributor
