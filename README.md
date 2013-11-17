@@ -1,7 +1,7 @@
 contributor.io
 ==============
 
-Fetch counts of a user's contributions to various platforms (Github, NPM, ...)
+Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, ...)
 
 *Web service coming soon...*
 
