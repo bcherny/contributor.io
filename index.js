@@ -9,7 +9,10 @@ ejs = require('ejs');
 
 fs = require('fs');
 
-config = {};
+config = {
+  title: 'contributor.io',
+  description: 'Fetch your contribution counts for various platforms (Github, NPM, Gem, CPAN, ...)'
+};
 
 app = express();
 

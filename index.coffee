@@ -6,7 +6,9 @@ ejs = require 'ejs'
 fs = require 'fs'
 
 # data for template
-config = {}
+config =
+	title: 'contributor.io'
+	description: 'Fetch your contribution counts for various platforms (Github, NPM, Gem, CPAN, ...)'
 
 # configure server
 app = do express
