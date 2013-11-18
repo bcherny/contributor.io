@@ -1,6 +1,5 @@
 
 # deps
-
 _ = require 'lodash'
 promise = require 'when'
 apis =
@@ -10,7 +9,6 @@ apis =
 	cpan: require 'cpan-count'
 
 # contributor
-
 contributor = (identities = {}) ->
 
 	deferred = promise.defer()
@@ -39,6 +37,9 @@ contributor = (identities = {}) ->
 
 	# return
 	deferred.promise
+
+# add "supported" array
+contributor.supported = _.keys apis
 
 # exports
 module.exports = contributor
