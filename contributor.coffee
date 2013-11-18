@@ -39,7 +39,7 @@ contributor = (identities = {}) ->
 	deferred.promise
 
 # add "supported" array
-contributor.supported = _.keys apis
+contributor.support = _.keys apis
 
 # exports
 module.exports = contributor

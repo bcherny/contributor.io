@@ -9,16 +9,19 @@ config =
 
 # configure server
 app = express()
-app.use cors()
 app.use express.bodyParser()
 app.use express.logger()
 
 # start server
 app.listen config.port
 
-console.log contributor
-
 # routes
 app.get '/', (req, res) ->
 
-	npm = req.query.npm
+	# get passed usernames
+
+	params = {}
+
+	for platform in contributor.support
+
+		params[platform] = req.query[platform]

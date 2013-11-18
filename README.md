@@ -42,6 +42,14 @@ contributor
 	# }
 ```
 
+## Get supported platforms
+
+```coffee
+contributor = require 'contributor.io'
+
+contributor.support #=> returns an array of supported platforms
+```
+
 ## Environment support
 
 - Node

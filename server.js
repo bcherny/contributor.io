@@ -11,17 +11,20 @@ config = {
 
 app = express();
 
-app.use(cors());
-
 app.use(express.bodyParser());
 
 app.use(express.logger());
 
 app.listen(config.port);
 
-console.log(contributor);
-
 app.get('/', function(req, res) {
-  var npm;
-  return npm = req.query.npm;
+  var params, platform, _i, _len, _ref, _results;
+  params = {};
+  _ref = contributor.support;
+  _results = [];
+  for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+    platform = _ref[_i];
+    _results.push(params[platform] = req.query[platform]);
+  }
+  return _results;
 });

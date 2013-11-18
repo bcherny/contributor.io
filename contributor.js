@@ -40,6 +40,6 @@ contributor = function(identities) {
   return deferred.promise;
 };
 
-contributor.supported = _.keys(apis);
+contributor.support = _.keys(apis);
 
 module.exports = contributor;
