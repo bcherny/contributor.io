@@ -21,7 +21,20 @@ Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, C
 - Bower
 - Component
 
-## Usage
+## Usage (as server)
+
+```bash
+# install dependencies
+npm install
+
+# start server
+node server
+
+# send a request!
+curl localhost:5000?github=myGithubUsername&npm=myNpmUsername
+```
+
+## Usage (as package)
 
 ```coffee
 contributor = require 'contributor.io'
@@ -42,7 +55,7 @@ contributor
 	# }
 ```
 
-## Get supported platforms
+### Get supported platforms
 
 ```coffee
 contributor = require 'contributor.io'
