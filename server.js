@@ -6,25 +6,27 @@ contributor = require('./contributor');
 express = require('express');
 
 config = {
-  port: 8000
+  port: 5000
 };
 
 app = express();
-
-app.use(express.bodyParser());
 
 app.use(express.logger());
 
 app.listen(config.port);
 
 app.get('/', function(req, res) {
-  var params, platform, _i, _len, _ref, _results;
-  params = {};
+  var identities, param, platform, _i, _len, _ref;
+  identities = {};
   _ref = contributor.support;
-  _results = [];
   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
     platform = _ref[_i];
-    _results.push(params[platform] = req.query[platform]);
+    param = req.query[platform];
+    if (param) {
+      identities[platform] = param;
+    }
   }
-  return _results;
+  return contributor(identities).then(function(counts) {
+    return console.log(counts);
+  });
 });
