@@ -1,7 +1,7 @@
 {
   "name": "contributor.io",
   "version": "0.0.3",
-  "description": "Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, ...)",
+  "description": "Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, CPAN, ...)",
   "main": "contributor.js",
   "scripts": {
     "test": "./node_modules/.bin/nodeunit test"
@@ -29,12 +29,13 @@
     "url": "https://github.com/eighttrackmind/contributor/issues"
   },
   "dependencies": {
-    "github-repos": "0.0.2",
-    "npm-packages": "0.0.1",
+    "github-repos": "0.0.x",
+    "npm-packages": "0.0.x",
     "lodash": "~2.3.0",
     "when": "~2.6.0",
-    "gem-count": "0.0.1",
-    "express": "~3.4.4"
+    "gem-count": "0.0.x",
+    "express": "~3.4.4",
+    "cpan-count": "0.0.x"
   },
   "devDependencies": {
     "nodeunit": "~0.8.2"

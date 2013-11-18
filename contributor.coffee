@@ -7,6 +7,7 @@ apis =
 	gem: require 'gem-count'
 	github: require 'github-repos'
 	npm: require 'npm-packages'
+	cpan: require 'cpan-count'
 
 # contributor
 
