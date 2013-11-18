@@ -2,6 +2,11 @@
 # deps
 contributor = require './contributor'
 express = require 'express'
+ejs = require 'ejs'
+fs = require 'fs'
+
+# data for template
+config = {}
 
 # configure server
 app = do express
@@ -10,22 +15,12 @@ app.use do express.logger
 # routes
 app.get '/', (req, res) ->
 
-	identities = {}
+	fs.readFile 'templates/index.ejs', (err, template) ->
 
-	success = (counts) ->
-		res.send counts
+		if err
+			throw new Error err
 
-	error = (counts) ->
-		res.send 404
-
-	# get passed identities
-	for platform in contributor.support
-		param = req.query[platform]
-		if param
-			identities[platform] = param
-
-	# query
-	contributor(identities).then success, error
+		res.send ejs.render template.toString(), config
 
 # export
 exports.app = app
