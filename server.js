@@ -16,8 +16,14 @@ app.use(express.logger());
 app.listen(config.port);
 
 app.get('/', function(req, res) {
-  var identities, param, platform, _i, _len, _ref;
+  var error, identities, param, platform, success, _i, _len, _ref;
   identities = {};
+  success = function(counts) {
+    return res.send(counts);
+  };
+  error = function(counts) {
+    return res.send(404);
+  };
   _ref = contributor.support;
   for (_i = 0, _len = _ref.length; _i < _len; _i++) {
     platform = _ref[_i];
@@ -26,7 +32,5 @@ app.get('/', function(req, res) {
       identities[platform] = param;
     }
   }
-  return contributor(identities).then(function(counts) {
-    return console.log(counts);
-  });
+  return contributor(identities).then(success, error);
 });

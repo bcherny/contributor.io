@@ -19,6 +19,12 @@ app.get '/', (req, res) ->
 
 	identities = {}
 
+	success = (counts) ->
+		res.send counts
+
+	error = (counts) ->
+		res.send 404
+
 	# get passed identities
 	for platform in contributor.support
 		param = req.query[platform]
@@ -26,5 +32,4 @@ app.get '/', (req, res) ->
 			identities[platform] = param
 
 	# query
-	contributor(identities).then (counts) ->
-		console.log counts
+	contributor(identities).then success, error
