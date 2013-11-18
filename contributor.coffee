@@ -16,15 +16,20 @@ contributor = (identities = {}) ->
 	have = 0
 	need = 0
 
-	done = (platform, count) ->
+	check = ->
+
+		action = if ++have is need then 'resolve' else 'notify'
+		deferred[action] counts
+
+	success = (platform, count) ->
 
 		counts[platform] = count
+		do check
 
-		if ++have is need
-			deferred.resolve counts
+	error = (platform, err) ->
 
-		else
-			deferred.notify counts
+		counts[platform] = err
+		do check
 
 	_.each apis, (fn, platform) ->
 		if platform of identities
@@ -32,8 +37,9 @@ contributor = (identities = {}) ->
 			++need
 
 			fn(identities[platform]).then (count) ->
-				done platform, count
-			, deferred.reject
+				success platform, count
+			, (err) ->
+				error platform, err
 
 	# return
 	deferred.promise

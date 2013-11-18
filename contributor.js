@@ -13,7 +13,7 @@ apis = {
 };
 
 contributor = function(identities) {
-  var counts, deferred, done, have, need;
+  var check, counts, deferred, error, have, need, success;
   if (identities == null) {
     identities = {};
   }
@@ -21,20 +21,27 @@ contributor = function(identities) {
   counts = {};
   have = 0;
   need = 0;
-  done = function(platform, count) {
+  check = function() {
+    var action;
+    action = ++have === need ? 'resolve' : 'notify';
+    return deferred[action](counts);
+  };
+  success = function(platform, count) {
     counts[platform] = count;
-    if (++have === need) {
-      return deferred.resolve(counts);
-    } else {
-      return deferred.notify(counts);
-    }
+    return check();
+  };
+  error = function(platform, err) {
+    counts[platform] = err;
+    return check();
   };
   _.each(apis, function(fn, platform) {
     if (platform in identities) {
       ++need;
       return fn(identities[platform]).then(function(count) {
-        return done(platform, count);
-      }, deferred.reject);
+        return success(platform, count);
+      }, function(err) {
+        return error(platform, err);
+      });
     }
   });
   return deferred.promise;

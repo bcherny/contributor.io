@@ -8,8 +8,8 @@ config =
 	port: 5000
 
 # configure server
-app = express()
-app.use express.logger()
+app = do express
+app.use do express.logger
 
 # start server
 app.listen config.port
