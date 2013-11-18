@@ -7,12 +7,19 @@ express = require 'express'
 # configuration
 config =
 	port: 5000
+	static: ['css', 'js', 'img']
 
 # configure server
 app = do express
 app.use do express.logger
+
+# (sub)domains
 app.use express.vhost 'localhost', index.app
 app.use express.vhost 'api.localhost', api.app
+
+# static resources
+for route in config.static
+	app.use "/#{route}", express.static "#{__dirname}/#{route}"
 
 # start server
 app.listen config.port
