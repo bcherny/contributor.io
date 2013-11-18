@@ -1,6 +1,7 @@
 
 # deps
-contributor = require './contributor'
+api = require './api'
+index = require './index'
 express = require 'express'
 
 # configuration
@@ -10,26 +11,8 @@ config =
 # configure server
 app = do express
 app.use do express.logger
+app.use express.vhost 'localhost', index.app
+app.use express.vhost 'api.localhost', api.app
 
 # start server
 app.listen config.port
-
-# routes
-app.get '/', (req, res) ->
-
-	identities = {}
-
-	success = (counts) ->
-		res.send counts
-
-	error = (counts) ->
-		res.send 404
-
-	# get passed identities
-	for platform in contributor.support
-		param = req.query[platform]
-		if param
-			identities[platform] = param
-
-	# query
-	contributor(identities).then success, error
