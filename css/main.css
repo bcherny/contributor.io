@@ -4,5 +4,11 @@
   padding: 0;
 }
 body {
+  background: #eee;
   font: 13px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+h1,
+h2 {
+  font-weight: normal;
+  padding: 10px 10px 0;
 }

@@ -1,5 +1,6 @@
 
 # deps
+_ = require 'lodash'
 contributor = require './contributor'
 express = require 'express'
 ejs = require 'ejs'
@@ -17,12 +18,19 @@ app.use do express.logger
 # routes
 app.get '/', (req, res) ->
 
-	fs.readFile 'templates/index.ejs', (err, template) ->
+	# feed some data from package.json
+	fs.readFile 'package.json', (err, pkg) ->
 
-		if err
-			throw new Error err
+		pkg = JSON.parse pkg
 
-		res.send ejs.render template.toString(), config
+		fs.readFile 'templates/index.ejs', (err, template) ->
+
+			if err
+				throw new Error err
+
+			res.send ejs.render template.toString(),
+				name: pkg.name
+				description: pkg.description
 
 # export
 exports.app = app
