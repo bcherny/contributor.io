@@ -39,6 +39,12 @@ curl localhost:5000?github=myGithubUsername&npm=myNpmUsername
 
 ### ...Or as a package
 
+```bash
+# install dependencies
+npm install
+```
+And in your (coffee)script:
+
 ```coffee
 contributor = require 'contributor.io'
 
