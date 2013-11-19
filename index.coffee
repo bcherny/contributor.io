@@ -5,6 +5,7 @@ contributor = require './contributor'
 express = require 'express'
 ejs = require 'ejs'
 fs = require 'fs'
+markdown = require 'markdown'
 
 # data for template
 config =
@@ -23,14 +24,20 @@ app.get '/', (req, res) ->
 
 		pkg = JSON.parse pkg
 
-		fs.readFile 'templates/index.ejs', (err, template) ->
+		# feed other data from the readme
+		fs.readFile 'README.md', (err, readme) ->
 
-			if err
-				throw new Error err
+			marked = markdown.parse readme
 
-			res.send ejs.render template.toString(),
-				name: pkg.name
-				description: pkg.description
+			# load the template
+			fs.readFile 'templates/index.ejs', (err, template) ->
+
+				if err
+					throw new Error err
+
+				res.send ejs.render template.toString(),
+					name: pkg.name
+					description: pkg.description
 
 # export
 exports.app = app
