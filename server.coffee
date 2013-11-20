@@ -6,7 +6,7 @@ express = require 'express'
 
 # configuration
 config =
-	port: 5000
+	port: process.env.PORT or 5000
 	static: ['css', 'js', 'img']
 
 # configure server

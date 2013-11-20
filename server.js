@@ -8,7 +8,7 @@ index = require('./index');
 express = require('express');
 
 config = {
-  port: 5000,
+  port: process.env.PORT || 5000,
   "static": ['css', 'js', 'img']
 };
 
