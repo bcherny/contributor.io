@@ -7,7 +7,8 @@ body {
   background: #eee;
   font: 13px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
-code {
+code,
+pre {
   background: rgba(255,255,255,0.8);
   font: 12px Menlo, Monaco, "Courier New";
   padding: 2px 4px;
@@ -23,6 +24,10 @@ h2 {
   font-size: 16px;
   font-weight: normal;
 }
+pre code {
+  background: 0;
+  padding: 0;
+}
 .github-banner img {
   position: absolute;
   right: 0;
@@ -36,34 +41,37 @@ h2 {
   margin-right: -20px;
   width: 40%;
 }
-#sample-rest {
+#spec {
   border-left: 1px solid #ddd;
   float: right;
   margin-right: -21px;
   padding-left: 20px;
   width: 50%;
 }
-#sample-rest h3 {
+#spec h3 {
   font-size: 24px;
 }
-#sample-rest h3,
-#sample-rest h4,
-#sample-rest th {
+#spec h3,
+#spec h4,
+#spec th {
   color: #666;
 }
-#sample-rest h4 {
+#spec h4 {
   font-style: italic;
 }
-#sample-rest h4,
-#sample-rest pre {
+#spec h4,
+#spec pre {
   margin: 1em 0;
 }
-#sample-rest table {
+#spec table {
   border-collapse: collapse;
   text-align: left;
 }
-#sample-rest td,
-#sample-rest th {
+#spec table pre {
+  margin: 0;
+}
+#spec td,
+#spec th {
   border-bottom: 1px solid #ddd;
   padding: 5px 10px 5px 0;
 }

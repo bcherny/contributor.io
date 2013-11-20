@@ -27,7 +27,7 @@
 	<!--  REST API SAMPLE  -->
 
 
-	<div id="sample-rest">
+	<div id="spec">
 		<h3>REST API</h3>
 
 		<pre><code>GET http://contributor.io?[github=username]&amp;[npm=username] ...</code></pre>
@@ -49,10 +49,43 @@
 			</thead>
 		</table>
 
+		<h4>Returns</h4>
+
+		<table>
+			<tr>
+				<td class="th">Content-Type</td>
+				<td><code>JSON</code></td>
+			</tr>
+			<tr>
+				<td class="th">Body</td>
+				<td><pre><code>{
+  github: 55,
+  npm: 166,
+  gem: 5
+}</code></pre></td>
+			</tr>
+		</table>
+
 		<h4>Example</h4>
 
 		<pre><code>GET contributor.io?github=eighttrackmind&npm=bcherny&gem=bcherny</code></pre>
 
+	</div>
+
+
+	<!-- code samples -->
+
+
+	<div id="samples">
+		<h3>Code samples</h3>
+
+		<h4>Bash</h4>
+
+		<pre>
+			<code>
+				curl contributor.io?github=eighttrackmind&npm=bcherny&gem=bcherny
+			</code>
+		</pre>
 	</div>
 
 
