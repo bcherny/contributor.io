@@ -8,15 +8,16 @@ index = require('./index');
 express = require('express');
 
 config = {
+  host: 'glacial-wave-9117.herokuapp.com',
   port: process.env.PORT || 5000,
   "static": ['css', 'js', 'img']
 };
 
 app = express();
 
-app.use(express.vhost('localhost', index.app));
+app.use(express.vhost("" + config.host, index.app));
 
-app.use(express.vhost('api.localhost', api.app));
+app.use(express.vhost("api." + config.host, api.app));
 
 _ref = config["static"];
 for (_i = 0, _len = _ref.length; _i < _len; _i++) {

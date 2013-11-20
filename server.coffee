@@ -6,6 +6,7 @@ express = require 'express'
 
 # configuration
 config =
+	host: 'glacial-wave-9117.herokuapp.com'
 	port: process.env.PORT or 5000
 	static: ['css', 'js', 'img']
 
@@ -14,8 +15,8 @@ app = do express
 #app.use do express.logger
 
 # (sub)domains
-app.use express.vhost 'localhost', index.app
-app.use express.vhost 'api.localhost', api.app
+app.use express.vhost "#{config.host}", index.app
+app.use express.vhost "api.#{config.host}", api.app
 
 # static resources
 for route in config.static
