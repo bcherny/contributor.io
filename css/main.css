@@ -7,6 +7,9 @@ body {
   background: #eee;
   font: 13px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
+code {
+  font: 12px Menlo, Monaco, "Courier New";
+}
 h1,
 h2 {
   padding: 10px 10px 0;
@@ -24,4 +27,7 @@ h2 {
   top: 0;
   height: 149px;
   width: 149px;
+}
+#sample-rest {
+  float: right;
 }

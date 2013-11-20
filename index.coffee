@@ -3,7 +3,6 @@
 _ = require 'lodash'
 contributor = require './contributor'
 express = require 'express'
-ejs = require 'ejs'
 fs = require 'fs'
 highlight = (require 'highlight').Highlight
 
