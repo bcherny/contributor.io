@@ -5,7 +5,7 @@ contributor = require './contributor'
 express = require 'express'
 ejs = require 'ejs'
 fs = require 'fs'
-markdown = require 'markdown'
+highlight = (require 'highlight').Highlight
 
 # configure server
 app = do express
@@ -25,9 +25,14 @@ app.get '/', (req, res) ->
 			if err
 				throw new Error err
 
-			res.send ejs.render template.toString(),
+			html = ejs.render do template.toString,
 				name: pkg.name
 				description: pkg.description
+				support: ['github', 'NPM', 'CPAN', 'Ruby Gems']
+
+			#highlight html, false, true
+
+			res.send html
 
 # export
 exports.app = app

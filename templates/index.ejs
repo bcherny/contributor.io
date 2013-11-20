@@ -7,9 +7,14 @@
 	<title><%= name %> | <%= description %></title>
 
 	<link rel="stylesheet" href="../css/main.css" />
+	<link rel="stylesheet" href="../css/github.css" />
 
 </head>
 <body>
+
+
+	<!--  header  -->
+
 
 	<h1><%= name %></h1>
 	<h2><%= description %></h2>
@@ -17,6 +22,28 @@
 	<a class="github-banner" href="https://github.com/eighttrackmind/contributor.io">
 		<img src="http://aral.github.com/fork-me-on-github-retina-ribbons/right-graphite@2x.png" alt="Fork me on GitHub" />
 	</a>
+
+
+	<!--  REST API SAMPLE  -->
+
+
+	<div id="sample-rest">
+		<h3>Concise REST API</h3>
+
+		<code>
+			GET contributor.io?[github=username]&amp;[npm=username] ...
+		</code>
+
+		Supported platforms:
+
+		<ul>
+			<% for (var n = support.length; n--;) { %>
+				<li><code><%= support[n] %></code></li>
+			<% } %>
+		</ul>
+
+	</div>
+
 
 </body>
 </html>
