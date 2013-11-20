@@ -34,13 +34,29 @@
 			GET contributor.io?[github=username]&amp;[npm=username] ...
 		</code>
 
-		Supported platforms:
+		<h4>Query parameters</h4>
+		<em>Note that parameters are all optional</em>
 
-		<ul>
-			<% for (var n = support.length; n--;) { %>
-				<li><code><%= support[n] %></code></li>
-			<% } %>
-		</ul>
+		<table>
+			<thead>
+				<tr>
+					<th>Parameter</th>
+					<th>Description</th>
+				</tr>
+				<% _.each(support, function(key, value) { %>
+					<tr>
+						<td><code><%= value %></code></td>
+						<td><%= key %></td>
+					</tr>
+				<% }) %>
+			</thead>
+		</table>
+
+		For example:
+
+		<code>
+			GET contributor.io?github=eighttrackmind&npm=bcherny&gem=bcherny
+		</code>
 
 	</div>
 

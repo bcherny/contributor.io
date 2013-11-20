@@ -14,8 +14,6 @@ config = {
 
 app = express();
 
-app.use(express.logger());
-
 app.use(express.vhost('localhost', index.app));
 
 app.use(express.vhost('api.localhost', api.app));

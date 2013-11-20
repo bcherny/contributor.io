@@ -9,7 +9,14 @@ highlight = (require 'highlight').Highlight
 
 # configure server
 app = do express
-app.use do express.logger
+#app.use do express.logger
+
+# platform descriptions
+descriptions =
+	cpan: 'CPAN username'
+	gem: 'Rubygems username'
+	github: 'Github username'
+	npm: 'NPM username'
 
 # routes
 app.get '/', (req, res) ->
@@ -20,15 +27,15 @@ app.get '/', (req, res) ->
 		pkg = JSON.parse pkg
 
 		# load the template
-		fs.readFile 'templates/index.ejs', (err, template) ->
+		fs.readFile 'templates/index.html', (err, template) ->
 
 			if err
 				throw new Error err
 
-			html = ejs.render do template.toString,
+			html = _.template do template.toString,
 				name: pkg.name
 				description: pkg.description
-				support: ['github', 'NPM', 'CPAN', 'Ruby Gems']
+				support: _.pick descriptions, (value, key) -> key in contributor.support
 
 			#highlight html, false, true
 
