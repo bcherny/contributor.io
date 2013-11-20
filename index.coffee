@@ -4,7 +4,6 @@ _ = require 'lodash'
 contributor = require './contributor'
 express = require 'express'
 fs = require 'fs'
-highlight = (require 'highlight').Highlight
 
 # configure server
 app = do express
@@ -37,8 +36,6 @@ app.get '/', (req, res) ->
 				name: pkg.name
 				description: pkg.description
 				support: _.pick descriptions, (value, key) -> key in contributor.support
-
-			html = highlight html, false, true
 
 			res.send html
 
