@@ -8,17 +8,19 @@ body {
   font: 13px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 code {
+  background: rgba(255,255,255,0.8);
   font: 12px Menlo, Monaco, "Courier New";
+  padding: 2px 4px;
 }
 h1,
 h2 {
-  padding: 10px 10px 0;
+  padding: 0 0 0 20px;
 }
 h1 {
-  color: #000;
   font-size: 72px;
 }
 h2 {
+  font-size: 16px;
   font-weight: normal;
 }
 .github-banner img {
@@ -28,6 +30,40 @@ h2 {
   height: 149px;
   width: 149px;
 }
+#description {
+  color: #666;
+  float: left;
+  margin-right: -20px;
+  width: 40%;
+}
 #sample-rest {
+  border-left: 1px solid #ddd;
   float: right;
+  margin-right: -21px;
+  padding-left: 20px;
+  width: 50%;
+}
+#sample-rest h3 {
+  font-size: 24px;
+}
+#sample-rest h3,
+#sample-rest h4,
+#sample-rest th {
+  color: #666;
+}
+#sample-rest h4 {
+  font-style: italic;
+}
+#sample-rest h4,
+#sample-rest pre {
+  margin: 1em 0;
+}
+#sample-rest table {
+  border-collapse: collapse;
+  text-align: left;
+}
+#sample-rest td,
+#sample-rest th {
+  border-bottom: 1px solid #ddd;
+  padding: 5px 10px 5px 0;
 }
