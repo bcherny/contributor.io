@@ -7,11 +7,6 @@ ejs = require 'ejs'
 fs = require 'fs'
 markdown = require 'markdown'
 
-# data for template
-config =
-	title: 'contributor.io'
-	description: 'Fetch your contribution counts for various platforms (Github, NPM, Gem, CPAN, ...)'
-
 # configure server
 app = do express
 app.use do express.logger
@@ -27,7 +22,7 @@ app.get '/', (req, res) ->
 		# feed other data from the readme
 		fs.readFile 'README.md', (err, readme) ->
 
-			marked = markdown.parse readme
+			marked = markdown.markdown.parse readme.toString()
 
 			# load the template
 			fs.readFile 'templates/index.ejs', (err, template) ->
