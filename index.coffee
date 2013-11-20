@@ -19,20 +19,15 @@ app.get '/', (req, res) ->
 
 		pkg = JSON.parse pkg
 
-		# feed other data from the readme
-		fs.readFile 'README.md', (err, readme) ->
+		# load the template
+		fs.readFile 'templates/index.ejs', (err, template) ->
 
-			marked = markdown.markdown.parse readme.toString()
+			if err
+				throw new Error err
 
-			# load the template
-			fs.readFile 'templates/index.ejs', (err, template) ->
-
-				if err
-					throw new Error err
-
-				res.send ejs.render template.toString(),
-					name: pkg.name
-					description: pkg.description
+			res.send ejs.render template.toString(),
+				name: pkg.name
+				description: pkg.description
 
 # export
 exports.app = app

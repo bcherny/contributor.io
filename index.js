@@ -20,18 +20,14 @@ app.use(express.logger());
 app.get('/', function(req, res) {
   return fs.readFile('package.json', function(err, pkg) {
     pkg = JSON.parse(pkg);
-    return fs.readFile('README.md', function(err, readme) {
-      var marked;
-      marked = markdown.markdown.parse(readme.toString());
-      return fs.readFile('templates/index.ejs', function(err, template) {
-        if (err) {
-          throw new Error(err);
-        }
-        return res.send(ejs.render(template.toString(), {
-          name: pkg.name,
-          description: pkg.description
-        }));
-      });
+    return fs.readFile('templates/index.ejs', function(err, template) {
+      if (err) {
+        throw new Error(err);
+      }
+      return res.send(ejs.render(template.toString(), {
+        name: pkg.name,
+        description: pkg.description
+      }));
     });
   });
 });
