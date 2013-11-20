@@ -29,13 +29,15 @@ app.get('/', function(req, res) {
       if (err) {
         throw new Error(err);
       }
-      html = _.template(template.toString(), {
+      template = template.toString();
+      html = _.template(template, {
         name: pkg.name,
         description: pkg.description,
         support: _.pick(descriptions, function(value, key) {
           return __indexOf.call(contributor.support, key) >= 0;
         })
       });
+      html = highlight(html, false, true);
       return res.send(html);
     });
   });

@@ -31,12 +31,14 @@ app.get '/', (req, res) ->
 			if err
 				throw new Error err
 
-			html = _.template do template.toString,
+			template = do template.toString
+
+			html = _.template template,
 				name: pkg.name
 				description: pkg.description
 				support: _.pick descriptions, (value, key) -> key in contributor.support
 
-			#highlight html, false, true
+			html = highlight html, false, true
 
 			res.send html
 

@@ -7,7 +7,6 @@
 	<title><%= name %> | <%= description %></title>
 
 	<link rel="stylesheet" href="../css/main.css" />
-	<!--<link rel="stylesheet" href="../css/github.css" />-->
 
 </head>
 <body>
@@ -49,6 +48,10 @@
 			</thead>
 		</table>
 
+		<h4>Example</h4>
+
+		<pre><code>GET contributor.io?github=eighttrackmind&npm=bcherny&gem=bcherny</code></pre>
+
 		<h4>Returns</h4>
 
 		<table>
@@ -66,10 +69,6 @@
 			</tr>
 		</table>
 
-		<h4>Example</h4>
-
-		<pre><code>GET contributor.io?github=eighttrackmind&npm=bcherny&gem=bcherny</code></pre>
-
 	</div>
 
 
@@ -79,13 +78,11 @@
 	<div id="samples">
 		<h3>Code samples</h3>
 
-		<h4>Bash</h4>
+		<h4 id="bash">Bash</h4>
+		<pre><code>curl contributor.io?github=eighttrackmind&npm=bcherny&gem=bcherny</code></pre>
 
-		<pre>
-			<code>
-				curl contributor.io?github=eighttrackmind&npm=bcherny&gem=bcherny
-			</code>
-		</pre>
+		<h4 id="coffeescript">CoffeeScript</h4>
+		<script src="https://gist.github.com/eighttrackmind/7571653.js"></script>
 	</div>
 
 

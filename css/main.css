@@ -35,16 +35,20 @@ pre code {
   height: 149px;
   width: 149px;
 }
+#description,
+#samples {
+  box-sizing: border-box;
+  float: left;
+  padding-right: 20px;
+  width: 50%;
+}
 #description {
   color: #666;
-  float: left;
-  margin-right: -20px;
-  width: 40%;
 }
 #spec {
   border-left: 1px solid #ddd;
+  box-sizing: border-box;
   float: right;
-  margin-right: -21px;
   padding-left: 20px;
   width: 50%;
 }
@@ -74,4 +78,14 @@ pre code {
 #spec th {
   border-bottom: 1px solid #ddd;
   padding: 5px 10px 5px 0;
+}
+#samples {
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+#samples h3,
+#samples h4,
+#samples pre {
+  margin: 10px 0 0 0;
 }
