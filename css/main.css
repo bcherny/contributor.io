@@ -42,6 +42,9 @@ pre code {
   background: rgba(255,255,255,0.8) !important;
   font: 12px Menlo, Monaco, Consolas, "Courier New" !important;
 }
+.gist .gist-file .gist-meta {
+  opacity: 0.5;
+}
 .gist .gist-file .line-numbers {
   display: none;
 }
