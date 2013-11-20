@@ -1,3 +1,9 @@
+// mixins
+
+
+code()
+	background rgba(255,255,255,.8) !important
+	font 12px Menlo, Monaco, Consolas, "Courier New" !important
 
 
 // reset
@@ -18,8 +24,7 @@ body
 
 code
 pre
-	background rgba(255,255,255,.8)
-	font 12px Menlo, Monaco, "Courier New"
+	code()
 	padding 2px 4px
 
 h1
@@ -51,6 +56,14 @@ pre
 		height 149px
 		width 149px
 
+.gist .gist-file
+	border 0 !important
+
+	.gist-data
+		code()
+
+	.line-numbers
+		display none
 
 // elements
 
@@ -106,4 +119,5 @@ pre
 	h3
 	h4
 	pre
+	.gist-file
 		margin 10px 0 0 0
