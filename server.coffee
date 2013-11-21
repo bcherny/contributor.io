@@ -17,6 +17,13 @@ app.use do express.logger
 app.use index.app
 app.use api.app
 
+# google analytics?
+if process.env.heroku
+	ga = require 'node-ga'
+	app.use do express.cookieParser
+	app.use ga 'UA-45941700-1',
+		safe: true
+
 # routes (static resources)
 for route in config.static
 	app.use "/#{route}", express.static "#{__dirname}/#{route}"
