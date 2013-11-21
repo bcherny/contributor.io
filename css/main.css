@@ -20,6 +20,11 @@ h2 {
 h1 {
   font-size: 72px;
 }
+h1 sub {
+  font: normal 36px Garamond, "Times New Roman", Times, Georgia, serif;
+  position: relative;
+  top: -10px;
+}
 h2 {
   font-size: 16px;
   font-weight: normal;
