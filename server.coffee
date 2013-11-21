@@ -8,22 +8,13 @@ express = require 'express'
 config =
 	port: process.env.PORT or 5000
 	static: ['css', 'js', 'img']
-	host: 'localhost'
-	subdomains:
-		index: ''
-
-# environment-specific configuration
-if process.env.heroku
-
-	config.host = 'contributor.io'
-	config.subdomains.index = 'www.'
 
 # configure server
 app = do express
 app.use do express.logger
 
 # (sub)domains
-app.use express.vhost "#{config.subdomains.index}#{config.host}", index.app
+app.use index.app
 app.use api.app
 
 # static resources

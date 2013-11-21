@@ -9,23 +9,14 @@ express = require('express');
 
 config = {
   port: process.env.PORT || 5000,
-  "static": ['css', 'js', 'img'],
-  host: 'localhost',
-  subdomains: {
-    index: ''
-  }
+  "static": ['css', 'js', 'img']
 };
-
-if (process.env.heroku) {
-  config.host = 'contributor.io';
-  config.subdomains.index = 'www.';
-}
 
 app = express();
 
 app.use(express.logger());
 
-app.use(express.vhost("" + config.subdomains.index + config.host, index.app));
+app.use(index.app);
 
 app.use(api.app);
 
