@@ -35,7 +35,8 @@
     "when": "~2.6.0",
     "gem-count": "0.0.x",
     "express": "~3.4.4",
-    "cpan-count": "0.0.x"
+    "cpan-count": "0.0.x",
+    "cors": "~2.1.0"
   },
   "devDependencies": {
     "nodeunit": "~0.8.2"

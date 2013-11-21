@@ -2,10 +2,12 @@
 # deps
 _ = require 'lodash'
 contributor = require './contributor'
+cors = require 'cors'
 express = require 'express'
 
 # configure server
 app = do express
+app.use do cors
 app.use do express.logger
 
 # error handler
