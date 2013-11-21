@@ -28,14 +28,14 @@ Send a `GET` request to [contributor.io/api](http://contributor.io/api) with eac
 #### Bash example:
 
 ```bash
-curl http://contributor.io/api?github=eighttrackmind&npm=bcherny
+curl http://www.contributor.io/api?github=eighttrackmind&npm=bcherny
 ```
 
 #### JavaScript example:
 
 ```js
 var xhr = new XMLHttpRequest()
-  , url = 'http://contributor.io/api?github=eighttrackmind&npm=bcherny&gem=bcherny';
+  , url = 'http://www.contributor.io/api?github=eighttrackmind&npm=bcherny&gem=bcherny';
 
 xhr.onreadystatechange = function () {
 	if (req.readyState === 4) {
