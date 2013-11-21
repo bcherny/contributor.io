@@ -5,8 +5,6 @@ contributor.io
 
 Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, CPAN, ...)
 
-*Web service coming soon...*
-
 ## Platform support
 
 ### Current
