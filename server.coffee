@@ -16,7 +16,7 @@ app = do express
 #app.use do express.logger
 
 # (sub)domains
-app.use express.vhost "#{config.host}", index.app
+app.use express.vhost "www.#{config.host}", index.app
 app.use express.vhost "api.#{config.host}", api.app
 
 # static resources

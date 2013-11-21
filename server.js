@@ -17,7 +17,7 @@ config = {
 
 app = express();
 
-app.use(express.vhost("" + config.host, index.app));
+app.use(express.vhost("www." + config.host, index.app));
 
 app.use(express.vhost("api." + config.host, api.app));
 
