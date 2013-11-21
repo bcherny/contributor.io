@@ -63,7 +63,7 @@ xhr.open(url);
 xhr.send();
 ```
 
-### As a server
+### ...As a server
 
 ```bash
 # install dependencies
@@ -76,6 +76,12 @@ node server
 curl localhost:5000/api?github=myGithubUsername&npm=myNpmUsername
 # => { github: 42, npm: 66 }
 ```
+
+To add Github authentication (optional, increase request limit):
+
+1. Create a Github [personal access token](https://github.com/blog/1509-personal-api-tokens).
+
+2. Define `process.env.github_oauth_token` at the top of `api.coffee` and set it equal to the token you got in Step #1.
 
 ### ...Or as a package
 
