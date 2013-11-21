@@ -10,14 +10,18 @@ express = require('express');
 os = require('os');
 
 config = {
-  host: 'contributor.io',
   port: process.env.PORT || 5000,
-  "static": ['css', 'js', 'img']
+  "static": ['css', 'js', 'img'],
+  heroku: os.hostname() === '62294dc8-5733-4d4b-a1cd-a4a014dc6e6c'
 };
+
+config.host = config.heroku ? 'contributor.io' : 'localhost';
+
+config.indexSubdomain = config.heroku ? 'www.' : '';
 
 app = express();
 
-app.use(express.vhost("www." + config.host, index.app));
+app.use(express.vhost("" + config.indexSubdomain + config.host, index.app));
 
 app.use(express.vhost("api." + config.host, api.app));
 
