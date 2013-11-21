@@ -4,6 +4,7 @@ _ = require 'lodash'
 contributor = require './contributor'
 cors = require 'cors'
 express = require 'express'
+https = require 'https'
 
 # configure server
 app = do express
@@ -24,26 +25,44 @@ validate = (req, res) ->
 	if not (_.keys req.query).length
 		error res, 400, 'Error: API requires one or more identities passed as query parameters'
 
-# routes
-app.get '/api', (req, res) ->
+# authorize github?
+if process.env.github_oauth_id
 
-	identities = {}
+	options =
+		host: 'https://github.com'
+		path: "/login/oauth/authorize?client_id=#{process.env.github_oauth_id}"
+		headers:
+			Accept: 'application/json'
+	
+	https.get options, (res) ->
+		console.log res
 
-	success = (counts) ->
-		res.send 200, counts
+		do init
 
-	# validate request
-	validate req, res
+else do init
 
-	# get passed identities
-	for platform in contributor.support
-		param = req.query[platform]
-		if param
-			identities[platform] = param
+init = ->
 
-	# query
-	(contributor identities).then success, (e) ->
-		error res, 404, e
+	# routes
+	app.get '/api', (req, res) ->
+
+		identities = {}
+
+		success = (counts) ->
+			res.send 200, counts
+
+		# validate request
+		validate req, res
+
+		# get passed identities
+		for platform in contributor.support
+			param = req.query[platform]
+			if param
+				identities[platform] = param
+
+		# query
+		(contributor identities).then success, (e) ->
+			error res, 404, e
 
 # export
 exports.app = app
