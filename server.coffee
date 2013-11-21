@@ -4,17 +4,20 @@ api = require './api'
 index = require './index'
 express = require 'express'
 
-# environment sniffing is dirty dirty!
-heroku = process.env.heroku
-
 # configuration
 config =
 	port: process.env.PORT or 5000
 	static: ['css', 'js', 'img']
-	host: if heroku then 'contributor.io' else 'localhost'
+	host: 'localhost'
 	subdomains:
 		api: 'api.'
-		index: if heroku then 'www.' else ''
+		index: ''
+
+# environment-specific configuration
+if process.env.heroku
+
+	config.host = 'contributor.io'
+	config.subdomains.index = 'www.'
 
 # configure server
 app = do express
