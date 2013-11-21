@@ -11,7 +11,7 @@ config =
 
 # configure server
 app = do express
-#app.use do express.logger
+app.use do express.logger
 
 # (sub)domains
 app.use index.app

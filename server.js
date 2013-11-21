@@ -14,6 +14,8 @@ config = {
 
 app = express();
 
+app.use(express.logger());
+
 app.use(index.app);
 
 app.use(api.app);
