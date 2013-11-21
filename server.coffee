@@ -10,7 +10,6 @@ config =
 	static: ['css', 'js', 'img']
 	host: 'localhost'
 	subdomains:
-		api: 'api.'
 		index: ''
 
 # environment-specific configuration
@@ -21,11 +20,11 @@ if process.env.heroku
 
 # configure server
 app = do express
-#app.use do express.logger
+app.use do express.logger
 
 # (sub)domains
 app.use express.vhost "#{config.subdomains.index}#{config.host}", index.app
-app.use express.vhost "#{config.subdomains.api}#{config.host}", api.app
+app.use api.app
 
 # static resources
 for route in config.static

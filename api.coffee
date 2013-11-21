@@ -8,7 +8,9 @@ app = do express
 app.use do express.logger
 
 # routes
-app.get '/', (req, res) ->
+app.get '/api', (req, res) ->
+
+	console.log 'api!'
 
 	identities = {}
 

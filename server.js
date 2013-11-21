@@ -12,7 +12,6 @@ config = {
   "static": ['css', 'js', 'img'],
   host: 'localhost',
   subdomains: {
-    api: 'api.',
     index: ''
   }
 };
@@ -24,9 +23,11 @@ if (process.env.heroku) {
 
 app = express();
 
+app.use(express.logger());
+
 app.use(express.vhost("" + config.subdomains.index + config.host, index.app));
 
-app.use(express.vhost("" + config.subdomains.api + config.host, api.app));
+app.use(api.app);
 
 _ref = config["static"];
 for (_i = 0, _len = _ref.length; _i < _len; _i++) {

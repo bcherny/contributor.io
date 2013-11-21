@@ -9,8 +9,9 @@ app = express();
 
 app.use(express.logger());
 
-app.get('/', function(req, res) {
+app.get('/api', function(req, res) {
   var error, identities, param, platform, success, _i, _len, _ref;
+  console.log('api!');
   identities = {};
   success = function(counts) {
     return res.send(counts);
