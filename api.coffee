@@ -34,10 +34,12 @@ if process.env.github_oauth_id
 		headers:
 			Accept: 'application/json'
 	
-	https.get options, (res) ->
+	req = https.get options, (res) ->
 		console.log res
-
 		do init
+
+	req.on 'error', (e) ->
+		throw new Error e
 
 else do init
 
