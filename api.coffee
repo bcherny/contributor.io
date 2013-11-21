@@ -10,8 +10,6 @@ app.use do express.logger
 # routes
 app.get '/api', (req, res) ->
 
-	console.log 'api!'
-
 	identities = {}
 
 	success = (counts) ->
