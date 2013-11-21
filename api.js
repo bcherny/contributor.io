@@ -32,7 +32,7 @@ app.get('/api', function(req, res) {
   var identities, param, platform, success, _i, _len, _ref;
   identities = {};
   success = function(counts) {
-    return res.send(counts);
+    return res.send(200, counts);
   };
   validate(req, res);
   _ref = contributor.support;

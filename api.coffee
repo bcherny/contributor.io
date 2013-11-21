@@ -30,7 +30,7 @@ app.get '/api', (req, res) ->
 	identities = {}
 
 	success = (counts) ->
-		res.send counts
+		res.send 200, counts
 
 	# validate request
 	validate req, res
