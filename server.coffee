@@ -3,10 +3,11 @@
 api = require './api'
 index = require './index'
 express = require 'express'
+os = require 'os'
 
 # configuration
 config =
-	host: 'glacial-wave-9117.herokuapp.com'
+	host: 'contributor.io'
 	port: process.env.PORT or 5000
 	static: ['css', 'js', 'img']
 
