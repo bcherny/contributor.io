@@ -3,10 +3,9 @@
 api = require './api'
 index = require './index'
 express = require 'express'
-os = require 'os'
 
 # environment sniffing is dirty dirty!
-heroku = do os.hostname is '62294dc8-5733-4d4b-a1cd-a4a014dc6e6c'
+heroku = process.env.heroku
 
 # configuration
 config =
