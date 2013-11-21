@@ -31,6 +31,12 @@ contributor = function(identities) {
     return check();
   };
   error = function(platform, err) {
+    if (typeof err === 'object' && err !== null) {
+      err = err.toString();
+    }
+    if (typeof err === 'string' && (err.charAt(0)) === '{') {
+      err = JSON.parse(err);
+    }
     counts[platform] = err;
     return check();
   };

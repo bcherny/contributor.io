@@ -28,6 +28,12 @@ contributor = (identities = {}) ->
 
 	error = (platform, err) ->
 
+		if typeof err is 'object' and err isnt null
+			err = err.toString()
+
+		if typeof err is 'string' and (err.charAt 0) is '{'
+			err = JSON.parse err
+
 		counts[platform] = err
 		do check
 
