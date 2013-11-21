@@ -36,7 +36,8 @@
     "gem-count": "0.0.x",
     "express": "~3.4.4",
     "cpan-count": "0.0.x",
-    "cors": "~2.1.0"
+    "cors": "~2.1.0",
+    "request": "~2.27.0"
   },
   "devDependencies": {
     "nodeunit": "~0.8.2"
