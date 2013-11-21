@@ -23,21 +23,21 @@ Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, C
 
 ## Usage
 
-### Via API (will be supported soon!)
+### Via API
 
-Send a `GET` request to [api.contributor.io](http://api.contributor.io) with each platform/username you'd like as a query parameter.
+Send a `GET` request to [contributor.io/api](http://contributor.io/api) with each platform/username you'd like as a query parameter.
 
 #### Bash example:
 
 ```bash
-curl api.contributor.io?github=eighttrackmind&npm=bcherny
+curl http://contributor.io/api?github=eighttrackmind&npm=bcherny
 ```
 
 #### JavaScript example:
 
 ```js
 var xhr = new XMLHttpRequest()
-  , url = 'http://api.contributor.io?github=eighttrackmind&npm=bcherny&gem=bcherny';
+  , url = 'http://contributor.io/api?github=eighttrackmind&npm=bcherny&gem=bcherny';
 
 xhr.onreadystatechange = function () {
 	if (req.readyState === 4) {
@@ -75,7 +75,7 @@ npm install
 node server
 
 # send a request!
-curl localhost:5000?github=myGithubUsername&npm=myNpmUsername
+curl localhost:5000/api?github=myGithubUsername&npm=myNpmUsername
 # => { github: 42, npm: 66 }
 ```
 

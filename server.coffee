@@ -13,11 +13,11 @@ config =
 app = do express
 app.use do express.logger
 
-# (sub)domains
+# routes (dynamic)
 app.use index.app
 app.use api.app
 
-# static resources
+# routes (static resources)
 for route in config.static
 	app.use "/#{route}", express.static "#{__dirname}/#{route}"
 
