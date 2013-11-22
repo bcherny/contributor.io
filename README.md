@@ -21,7 +21,7 @@ Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, C
 
 ## Usage
 
-### Via API
+### ...Via API
 
 Send a `GET` request to [contributor.io/api](http://contributor.io/api) with each platform/username you'd like as a query parameter.
 
@@ -45,9 +45,9 @@ curl localhost:5000/api?github=myGithubUsername&npm=myNpmUsername
 
 To add Github authentication (optional, increase request limit):
 
-1. Create a Github [personal access token](https://github.com/blog/1509-personal-api-tokens).
+1. [Register a Github Application](http://developer.github.com/guides/basics-of-authentication/) to receive an oauth2 `id` and `secret`.
 
-2. Define `process.env.github_oauth_token` at the top of `api.coffee` and set it equal to the token you got in Step #1.
+2. Define `process.env.github_oauth_id` and `process.env.github_oauth_secret` somewhere (eg. at the top of `contributor.coffee`) and set them equal to the keys you got in Step #1.
 
 ### ...Or as a package
 
