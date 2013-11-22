@@ -39,7 +39,7 @@ query = function(res, identities) {
 };
 
 app.get('/api', function(req, res) {
-  var identities, options, param, platform, _i, _len, _ref;
+  var identities, param, platform, _i, _len, _ref;
   identities = {};
   validate(req, res);
   _ref = contributor.support;
@@ -50,22 +50,7 @@ app.get('/api', function(req, res) {
       identities[platform] = param;
     }
   }
-  if (process.env.github_oauth_token) {
-    options = {
-      url: 'https://api.github.com/user',
-      auth: {
-        user: "" + process.env.github_oauth_token + ":x-oauth-basic"
-      }
-    };
-    return request(options, function(e) {
-      if (e !== null) {
-        throw new Error(e);
-      }
-      return query(res, identities);
-    });
-  } else {
-    return query(res, identities);
-  }
+  return query(res, identities);
 });
 
 exports.app = app;

@@ -47,24 +47,8 @@ app.get '/api', (req, res) ->
 		if param
 			identities[platform] = param
 
-	# authorize github?
-	if process.env.github_oauth_token
-
-		options =
-			url: 'https://api.github.com/user'
-			auth:
-				user: "#{process.env.github_oauth_token}:x-oauth-basic"
-
-		request options, (e) ->
-
-			if e isnt null
-				throw new Error e
-
-			query res, identities
-
-	else
-	
-		query res, identities
+	# query!
+	query res, identities
 
 # export
 exports.app = app
