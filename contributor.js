@@ -39,9 +39,7 @@ contributor = function(identities) {
     if (platform in identities) {
       ++need;
       if (platform === 'github' && process.env.github_oauth_id && process.env.github_oauth_secret) {
-        _fn = function() {
-          return fn(identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret);
-        };
+        _fn = fn(identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret);
       } else {
         _fn = fn(identities[platform]);
       }
