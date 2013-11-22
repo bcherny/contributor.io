@@ -1,3 +1,5 @@
+# tracking
+require 'newrelic'
 
 # deps
 _ = require 'lodash'

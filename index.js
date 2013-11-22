@@ -2,6 +2,8 @@
 var app, contributor, descriptions, express, fs, _,
   __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
+require('newrelic');
+
 _ = require('lodash');
 
 contributor = require('./contributor');

@@ -17,8 +17,13 @@ app.use do express.logger
 app.use index.app
 app.use api.app
 
-# google analytics?
+# analytics?
 if process.env.heroku
+
+	# new relic
+	require 'newrelic'
+
+	# google
 	ga = require 'node-ga'
 	app.use do express.cookieParser
 	app.use ga 'UA-45941700-1',

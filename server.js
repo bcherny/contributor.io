@@ -21,6 +21,7 @@ app.use(index.app);
 app.use(api.app);
 
 if (process.env.heroku) {
+  require('newrelic');
   ga = require('node-ga');
   app.use(express.cookieParser());
   app.use(ga('UA-45941700-1', {
