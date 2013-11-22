@@ -9,17 +9,20 @@ exports.contributor = function(test) {
     gem: 'bcherny',
     github: 'eighttrackmind',
     npm: 'bcherny',
-    cpan: 'FAYLAND'
+    cpan: 'FAYLAND',
+    nuget: 'microsoft'
   }).then(function(counts) {
-    var cpanIsMoreThan10, gemIsZero, githubIsMoreThan10, npmIsMoreThan10;
+    var cpanIsMoreThan10, gemIsZero, githubIsMoreThan10, npmIsMoreThan10, nugetIsMoreThan10;
     gemIsZero = counts.gem === 0;
     githubIsMoreThan10 = counts.github > 10;
     npmIsMoreThan10 = counts.npm > 10;
     cpanIsMoreThan10 = counts.cpan > 10;
+    nugetIsMoreThan10 = counts.nuget > 10;
     test.equals(gemIsZero, true);
     test.equals(githubIsMoreThan10, true);
     test.equals(npmIsMoreThan10, true);
     test.equals(cpanIsMoreThan10, true);
+    test.equals(nugetIsMoreThan10, true);
     return test.done();
   });
 };
