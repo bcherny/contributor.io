@@ -3,7 +3,7 @@ contributor = require '../contributor'
 
 exports.contributor = (test) ->
 
-	test.expect 4
+	test.expect 5
 
 	contributor
 		gem: 'bcherny'

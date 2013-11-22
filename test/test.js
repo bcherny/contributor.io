@@ -4,7 +4,7 @@ var contributor;
 contributor = require('../contributor');
 
 exports.contributor = function(test) {
-  test.expect(4);
+  test.expect(5);
   return contributor({
     gem: 'bcherny',
     github: 'eighttrackmind',
