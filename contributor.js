@@ -9,7 +9,8 @@ apis = {
   gem: require('gem-count'),
   github: require('github-repos'),
   npm: require('npm-packages'),
-  cpan: require('cpan-count')
+  cpan: require('cpan-count'),
+  nuget: require('nuget-count')
 };
 
 contributor = function(identities) {

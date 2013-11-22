@@ -18,7 +18,8 @@ descriptions = {
   cpan: 'CPAN username',
   gem: 'Rubygems username',
   github: 'Github username',
-  npm: 'NPM username'
+  npm: 'NPM username',
+  nuget: 'Nuget username'
 };
 
 app.get('/', function(req, res) {

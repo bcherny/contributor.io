@@ -17,6 +17,7 @@ descriptions =
 	gem: 'Rubygems username'
 	github: 'Github username'
 	npm: 'NPM username'
+	nuget: 'Nuget username'
 
 # routes
 app.get '/', (req, res) ->

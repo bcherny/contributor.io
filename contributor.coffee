@@ -7,6 +7,7 @@ apis =
 	github: require 'github-repos'
 	npm: require 'npm-packages'
 	cpan: require 'cpan-count'
+	nuget: require 'nuget-count'
 
 # contributor
 contributor = (identities = {}) ->

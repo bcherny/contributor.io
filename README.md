@@ -13,6 +13,7 @@ Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, C
 - NPM
 - Rubygems
 - CPAN
+- Nuget
 
 ### Future
 
@@ -65,6 +66,7 @@ contributor
 	github: 'eighttrackmind'
 	npm: 'bcherny'
 	cpan: 'FAYLAND'
+	nuget: 'microsoft'
 .then (counts) ->
 
 	# returns an object with counts, eg.:
@@ -73,6 +75,7 @@ contributor
 	#	github: 50
 	#	npm: 45
 	#	cpan: 67
+	#   nuget: 818
 	# }
 ```
 
