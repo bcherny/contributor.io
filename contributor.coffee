@@ -11,7 +11,7 @@ apis =
 # contributor
 contributor = (identities = {}) ->
 
-	deferred = promise.defer()
+	deferred = do promise.defer
 	counts = {}
 	have = 0
 	need = 0
@@ -28,12 +28,6 @@ contributor = (identities = {}) ->
 
 	error = (platform, err) ->
 
-		if typeof err is 'object' and err isnt null
-			err = err.toString()
-
-		if typeof err is 'string' and (err.charAt 0) is '{'
-			err = JSON.parse err
-
 		counts[platform] = err
 		do check
 
@@ -42,7 +36,14 @@ contributor = (identities = {}) ->
 
 			++need
 
-			fn(identities[platform]).then (count) ->
+			# use github oauth?
+			if platform is 'github' and process.env.github_oauth_id and process.env.github_oauth_secret
+				_fn = -> fn identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret
+
+			else
+				_fn = fn identities[platform]
+
+			_fn.then (count) ->
 				success platform, count
 			, (err) ->
 				error platform, err

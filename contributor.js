@@ -31,19 +31,21 @@ contributor = function(identities) {
     return check();
   };
   error = function(platform, err) {
-    if (typeof err === 'object' && err !== null) {
-      err = err.toString();
-    }
-    if (typeof err === 'string' && (err.charAt(0)) === '{') {
-      err = JSON.parse(err);
-    }
     counts[platform] = err;
     return check();
   };
   _.each(apis, function(fn, platform) {
+    var _fn;
     if (platform in identities) {
       ++need;
-      return fn(identities[platform]).then(function(count) {
+      if (platform === 'github' && process.env.github_oauth_id && process.env.github_oauth_secret) {
+        _fn = function() {
+          return fn(identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret);
+        };
+      } else {
+        _fn = fn(identities[platform]);
+      }
+      return _fn.then(function(count) {
         return success(platform, count);
       }, function(err) {
         return error(platform, err);
