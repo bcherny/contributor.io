@@ -25,43 +25,9 @@ Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, C
 
 Send a `GET` request to [contributor.io/api](http://contributor.io/api) with each platform/username you'd like as a query parameter.
 
-#### Bash example:
+[CLI example](https://gist.github.com/eighttrackmind/7571801)
 
-```bash
-curl http://www.contributor.io/api?github=eighttrackmind&npm=bcherny
-```
-
-#### JavaScript example:
-
-```js
-var xhr = new XMLHttpRequest()
-  , url = 'http://www.contributor.io/api?github=eighttrackmind&npm=bcherny&gem=bcherny';
-
-xhr.onreadystatechange = function () {
-	if (req.readyState === 4) {
-		var response = xhr.responseText
-		  , status = xhr.status;
-
-		if (status < 400) {
-
-			var counts = JSON.parse(response);
-
-			// `counts` is an object with package counts, eg.:
-			// {
-			//	gem: 20,
-			//	github: 50,
-			//	npm: 45
-			// }
-
-		} else {
-			throw new Error(response);
-		}
-	}
-};
-
-xhr.open(url);
-xhr.send();
-```
+[JavaScript example](https://gist.github.com/eighttrackmind/7571653)
 
 ### ...As a server
 
