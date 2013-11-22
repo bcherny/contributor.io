@@ -2,7 +2,8 @@
   "name": "contributor.io",
   "version": "0.1.3",
   "description": "Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, CPAN, ...)",
-  "main": "contributor.js",
+  "homepage": "http://www.contributor.io",
+  "main": "contributor",
   "scripts": {
     "test": "./node_modules/.bin/nodeunit test"
   },
