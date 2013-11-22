@@ -22,7 +22,9 @@
     "github",
     "npm",
     "bower",
-    "component"
+    "component",
+    "nuget",
+    "cpan"
   ],
   "author": "Boris Cherny <boris@performancejs.com>",
   "license": "MIT",

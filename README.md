@@ -3,7 +3,7 @@ contributor.io
 
 [![Build Status](https://travis-ci.org/eighttrackmind/contributor.io.png)](https://travis-ci.org/eighttrackmind/contributor.io.png)
 
-Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, CPAN, ...)
+Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, CPAN, Nuget, ...)
 
 ## Platform support
 
