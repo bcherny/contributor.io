@@ -91,3 +91,18 @@ contributor.support #=> returns an array of supported platforms
 
 - Node
 - CommonJS
+
+## Contributing platform support
+
+1. Publish an NPM module which exports a single function that:
+	- Accepts one or more arguments. The first must be the `username` and the rest must be optional.
+	- Returns a deferred promise.
+	- A resolved promise must return a single `Number` (aka. the number of contributions).
+	- A rejected promise can return anything, but should ideally be a descriptive `Object`.
+	- Ensure that your module is unit tested, and that promises are resolved and rejected appropriately.
+2. Fork contributor.io.
+3. Install your dependency with `npm install --save myNewModuleName`.
+4. Require your module in the list at the top of `contributor.coffee`.
+5. Add a human-readable description to the list at the top of `index.coffee`.
+6. Add it to the list of supported modules in `README.md`, and as a keyword in `package.json`.
+7. Commit and send a pull request! :)
