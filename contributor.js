@@ -6,10 +6,10 @@ _ = require('lodash');
 promise = require('when');
 
 apis = {
+  cpan: require('cpan-count'),
   gem: require('gem-count'),
   github: require('github-repos'),
   npm: require('npm-packages'),
-  cpan: require('cpan-count'),
   nuget: require('nuget-count')
 };
 
@@ -21,10 +21,11 @@ contributor = function(identities) {
   deferred = promise.defer();
   counts = {};
   have = 0;
-  need = 0;
+  need = (_.keys(identities)).length;
   check = function() {
     var action;
-    action = ++have === need ? 'resolve' : 'notify';
+    ++have;
+    action = have === need ? 'resolve' : 'notify';
     return deferred[action](counts);
   };
   success = function(platform, count) {
@@ -35,21 +36,19 @@ contributor = function(identities) {
     counts[platform] = err;
     return check();
   };
-  _.each(apis, function(fn, platform) {
-    var _fn;
-    if (platform in identities) {
-      ++need;
-      if (platform === 'github' && process.env.github_oauth_id && process.env.github_oauth_secret) {
-        _fn = fn(identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret);
-      } else {
-        _fn = fn(identities[platform]);
-      }
-      return _fn.then(function(count) {
-        return success(platform, count);
-      }, function(err) {
-        return error(platform, err);
-      });
+  _.each(identities, function(identity, platform) {
+    var fn, _fn;
+    fn = apis[platform];
+    if (platform === 'github' && process.env.github_oauth_id && process.env.github_oauth_secret) {
+      _fn = fn(identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret);
+    } else {
+      _fn = fn(identities[platform]);
     }
+    return _fn.then(function(count) {
+      return success(platform, count);
+    }, function(err) {
+      return error(platform, err);
+    });
   });
   return deferred.promise;
 };

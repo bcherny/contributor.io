@@ -3,10 +3,10 @@
 _ = require 'lodash'
 promise = require 'when'
 apis =
+	cpan: require 'cpan-count'
 	gem: require 'gem-count'
 	github: require 'github-repos'
 	npm: require 'npm-packages'
-	cpan: require 'cpan-count'
 	nuget: require 'nuget-count'
 
 # contributor
@@ -15,11 +15,13 @@ contributor = (identities = {}) ->
 	deferred = do promise.defer
 	counts = {}
 	have = 0
-	need = 0
+	need = (_.keys identities).length
 
 	check = ->
 
-		action = if ++have is need then 'resolve' else 'notify'
+		++have
+
+		action = if have is need then 'resolve' else 'notify'
 		deferred[action] counts
 
 	success = (platform, count) ->
@@ -32,22 +34,22 @@ contributor = (identities = {}) ->
 		counts[platform] = err
 		do check
 
-	_.each apis, (fn, platform) ->
-		if platform of identities
+	_.each identities, (identity, platform) ->
 
-			++need
+		fn = apis[platform]
 
-			# use github oauth?
-			if platform is 'github' and process.env.github_oauth_id and process.env.github_oauth_secret
-				_fn = fn identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret
+		# use github oauth?
+		if platform is 'github' and process.env.github_oauth_id and process.env.github_oauth_secret
+			_fn = fn identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret
 
-			else
-				_fn = fn identities[platform]
+		else
+			_fn = fn identities[platform]
 
-			_fn.then (count) ->
-				success platform, count
-			, (err) ->
-				error platform, err
+		# query!
+		_fn.then (count) ->
+			success platform, count
+		, (err) ->
+			error platform, err
 
 	# return
 	deferred.promise
