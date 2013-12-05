@@ -40,7 +40,7 @@ npm install
 node server
 
 # send a request!
-curl localhost:5000/api?github=myGithubUsername&npm=myNpmUsername
+curl "localhost:5000/api?github=myGithubUsername&npm=myNpmUsername"
 # => { github: 42, npm: 66 }
 ```
 
@@ -49,6 +49,8 @@ To add Github authentication (optional, increase request limit):
 1. [Register a Github Application](http://developer.github.com/guides/basics-of-authentication/) to receive an oauth2 `id` and `secret`.
 
 2. Define `process.env.github_oauth_id` and `process.env.github_oauth_secret` somewhere (eg. at the top of `contributor.coffee`) and set them equal to the keys you got in Step #1.
+
+3. Define `process.env.github_user`, and set it equal to the username you want requests to be made under (defaults to the username queried).
 
 ### ...Or as a package
 
@@ -65,7 +67,7 @@ contributor
 	gem: 'bcherny'
 	github: 'eighttrackmind'
 	npm: 'bcherny'
-	cpan: 'FAYLAND'
+	cpan: 'fayland'
 	nuget: 'microsoft'
 .then (counts) ->
 
