@@ -40,7 +40,7 @@ contributor = (identities = {}) ->
 
 		# use github oauth?
 		if platform is 'github' and process.env.github_oauth_id and process.env.github_oauth_secret
-			_fn = fn identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret
+			_fn = fn identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret, process.env.github_user
 
 		else
 			_fn = fn identities[platform]

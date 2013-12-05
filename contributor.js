@@ -40,7 +40,7 @@ contributor = function(identities) {
     var fn, _fn;
     fn = apis[platform];
     if (platform === 'github' && process.env.github_oauth_id && process.env.github_oauth_secret) {
-      _fn = fn(identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret);
+      _fn = fn(identities[platform], process.env.github_oauth_id, process.env.github_oauth_secret, process.env.github_user);
     } else {
       _fn = fn(identities[platform]);
     }
