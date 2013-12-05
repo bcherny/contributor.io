@@ -1,6 +1,6 @@
 {
   "name": "contributor.io",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Fetch counts of a user's contributions to various platforms (Github, NPM, Gem, CPAN, Nuget, ...)",
   "homepage": "http://www.contributor.io",
   "main": "contributor",
